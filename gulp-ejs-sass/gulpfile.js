@@ -320,7 +320,7 @@ function cleanImages(done) {
 
 // ファイル監視
 const watchFiles = () => {
-  watch(paths.ejs.watch, series(cleanHtml,ejsCompile, browserReloadFunc));
+  watch(paths.ejs.watch, series(ejsCompile, browserReloadFunc));
   watch(paths.styles.src, series(sassCompile));
   watch(paths.styles.copy, series(cssCopy));
   watch(paths.scripts.src, series(jsCompile, browserReloadFunc));
