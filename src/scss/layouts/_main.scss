@@ -1,0 +1,15 @@
+@use '../global' as *;
+
+.main {
+  width: 100%;
+	min-height: calc(100vh - 80px);
+  padding: 0 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 80px;
+	.title{
+		color: $colorRed;
+		font-size: 40px;
+		text-align: center;
+	}
+}

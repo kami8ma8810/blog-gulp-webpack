@@ -1,0 +1,19 @@
+@use "sass:math";
+
+//pxをvwに変換
+@function vw($size, $viewport: 750) {
+  $rate: math.div(100,$viewport);
+  @return $rate * $size * 1vw;
+}
+@function vw_lg($size, $viewport: 1366) {
+  $rate: math.div(100,$viewport);
+  @return $rate * $size * 1vw;
+}
+@function vh($size, $viewport: 1334) {
+  $rate: math.div(100,$viewport);
+  @return $rate * $size * 1vh;
+}
+@function vh_lg($size, $viewport: 800) {
+  $rate: math.div(100,$viewport);
+  @return $rate * $size * 1vh;
+}

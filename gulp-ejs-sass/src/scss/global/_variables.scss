@@ -1,0 +1,49 @@
+// color
+$colorWhite: #ffffff !default;
+$colorBlack: #333333 !default;
+$colorGreen: #37ab9d !default;
+$colorRed: #e93d3d !default;
+
+// パス
+$imgPath:'../images/';
+$fontsPath:'../fonts/';
+
+// ブレイクポイント
+$breakpoints:
+('xs': ( min-width: 320px,
+  ),
+  's': (
+    min-width: 375px,
+  ),
+  'sm': (
+    min-width: 520px,
+  ),
+  'md': (
+    min-width: 768px,
+  ),
+  'lg': (
+    min-width: 960px,
+  ),
+  'tab': (
+    min-width: 1024px,
+  ),
+  'xl': (
+    min-width: 1366px,
+  ),
+  'pc-md': (
+    min-width: 1536px,
+  ),
+  'pc-lg': (
+    min-width: 1920px,
+  ),
+) !default;
+
+@font-face {
+  font-family: 'RobotoMonoRegular';
+  src: local('Roboto Mono Regular'),
+    url('#{$fontsPath}RobotoMonoRegular.woff2') format('woff2'),
+    url('#{$fontsPath}RobotoMonoRegular.woff') format('woff'),
+    url('#{$fontsPath}RobotoMonoRegular.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+}

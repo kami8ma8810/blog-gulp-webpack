@@ -1,0 +1,17 @@
+@use '../global' as *;
+
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  padding: vw(20);
+  background-color: $colorGreen;
+  color: $colorWhite;
+  @include roboto-regular;
+	@include mq(xl) {
+	padding: 40px;
+	}
+}
+.footer-copyright{
+	margin-right: 20px;
+}
