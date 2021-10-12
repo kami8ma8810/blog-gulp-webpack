@@ -1,23 +1,11 @@
-import test from './modules/test'
-test();
+import jQueryTest from './modules/jQuery-test'
+import modernFunction from './modules/modern-function'
+import highlightNav from './modules/highlight-nav'
+import topSlider from './modules/top-slider'
 
 document.addEventListener('DOMContentLoaded', () => {
+  jQueryTest();
   modernFunction();
   highlightNav();
+  topSlider();
 });
-
-
-// トップページswiper
-if (document.querySelector('.top-swiper') !== null) {
-  const topSwiper = new Swiper('.top-swiper', {
-    autoplay: {
-      delay: 1500,
-      disableOnInteraction: false, //ユーザー操作後もオートプレイ続行
-    },
-    loop: true,
-    speed: 400,
-    slidesPerView: 1,
-    centeredSlides: true,
-    grabCursor: true,
-  });
-}

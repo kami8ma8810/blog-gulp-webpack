@@ -2,6 +2,8 @@
 const path = require('path');
 // JavaScritpt を圧縮するプラグイン
 const TerserPlugin = require('terser-webpack-plugin');
+// webpack利用
+const Webpack = require('webpack');
 
 module.exports = {
   // モードの設定
@@ -25,6 +27,33 @@ module.exports = {
     // app.bundle.js と app2.bundle.js と app3.bundle.js が出力される
     filename: '[name].bundle.js',
   },
+  module: {
+    rules: [
+      {
+        // ローダーの処理対象ファイル
+        test: /\.js$/,
+        // ローダーの処理対象となるディレクトリ
+        // include: path.resolve(__dirname, './src/js'),
+        exclude: /node_modules/,
+        // 利用するローダー
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        ],
+      },
+    ],
+  },
+  // plugins: [
+  //   // まとめてインポートする
+  //   new Webpack.ProvidePlugin({
+  //     jQuery: 'jquery',
+  //     $: 'jquery',
+  //   }),
+  // ],
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -38,7 +67,7 @@ module.exports = {
           // 出力するファイル名
           // 今回は 'vendor' で、output.filename が '[name].bundle.js' のため、
           // vendor.bundle.js が出力される。
-          name: 'vendor',
+          name: 'vendors',
         },
       },
     },
@@ -50,41 +79,4 @@ module.exports = {
       }),
     ],
   },
-  module: {
-    rules: [
-      {
-        // ローダーの処理対象ファイル
-        test: /\.js$/,
-        // ローダーの処理対象となるディレクトリ
-        include: path.resolve(__dirname, './src/js'),
-        // 利用するローダー
-        use: 'babel-loader',
-      },
-    ],
-  },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       // 今回のプロパティ名は vendor だが、ここは任意のもので良い
-  //       vendor: {
-  //         // 共通モジュールとして分割する対象。以下の値を指定できる。
-  //         // initial: 静的にインポートしているモジュール、async: 動的（ダイナミック）にインポートしているモジュール、all: すべて
-  //         chunks: 'all',
-  //         // node_modules 配下のモジュールをバンドル対象とする
-  //         test: /[\\/]node_modules[\\/]/,
-  //         // 出力するファイル名
-  //         // 今回は 'vendor' で、output.filename が '[name].bundle.js' のため、
-  //         // vendor.bundle.js が出力される。
-  //         name: 'vendor',
-  //       },
-  //     },
-  //   },
-  //   minimizer: [
-  //     // JavaScritpt を圧縮する
-  //     new TerserPlugin({
-  //       // ライブラリのライセンスコメントなどを抽出した「xxx.LICENSE.txt」のようなファイルが出力されないようにする
-  //       extractComments: false,
-  //     }),
-  //   ],
-  // },
 };

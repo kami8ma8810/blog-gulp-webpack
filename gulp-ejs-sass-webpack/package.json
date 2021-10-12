@@ -6,7 +6,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-	"private":true,
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
@@ -15,10 +15,6 @@
     "last 3 versions",
     "ie >= 11"
   ],
-  "dependencies": {
-    "jquery": "^3.6.0",
-    "lodash-es": "^4.17.21"
-  },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
@@ -53,5 +49,10 @@
     "webpack": "^5.58.1",
     "webpack-cli": "^4.9.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "lodash-es": "^4.17.21",
+    "swiper": "^7.0.8"
   }
 }

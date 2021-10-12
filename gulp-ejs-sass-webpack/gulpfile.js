@@ -167,22 +167,22 @@ const sassCompile = () => {
 };
 
 // JavaScriptコンパイル
-// const jsCompile = () => {
-//   return src(paths.scripts.src)
-//     .pipe(
-//       plumber({
-//         // エラーがあっても処理を止めない
-//         errorHandler: notify.onError('Error: <%= error.message %>'),
-//       })
-//     )
-//     .pipe(
-//       babel({
-//         presets: ['@babel/preset-env'],
-//       })
-//     )
-//     .pipe(terser()) //圧縮
-//     .pipe(dest(paths.scripts.dist));
-// };
+const jsCompile = () => {
+  return src(paths.scripts.src)
+    .pipe(
+      plumber({
+        // エラーがあっても処理を止めない
+        errorHandler: notify.onError('Error: <%= error.message %>'),
+      })
+    )
+    .pipe(
+      babel({
+        presets: ['@babel/preset-env'],
+      })
+    )
+    .pipe(terser()) //圧縮
+    .pipe(dest(paths.scripts.dist));
+};
 
 // webpack
 const jsBundle = (done) => {

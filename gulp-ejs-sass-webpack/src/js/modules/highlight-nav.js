@@ -1,3 +1,4 @@
+import $ from 'jquery'
 
 // ヘッダーナビ現在のページをハイライト
 export default () => {

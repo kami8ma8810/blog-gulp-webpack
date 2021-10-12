@@ -1,4 +1,3 @@
-
 // Babelで変換されるかどうかのテストコード
 export default () => {
   const obj = { a: 'これが出力されれば', b: 'Babelを通じて' };
