@@ -3,15 +3,27 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+	"private":true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
   "browserslist": [
     "last 3 versions",
     "ie >= 11"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "lodash-es": "^4.17.21"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "autoprefixer": "^10.3.7",
+    "babel-loader": "^8.2.2",
     "browser-sync": "^2.27.5",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
@@ -36,12 +48,10 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^10.0.0",
-    "postcss": "^8.3.9"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "postcss": "^8.3.9",
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0",
+    "webpack-stream": "^7.0.0"
+  }
 }

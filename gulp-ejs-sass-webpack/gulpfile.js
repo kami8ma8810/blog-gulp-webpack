@@ -21,6 +21,9 @@ const cssNano = require('gulp-cssnano');
 // JavaScript
 const babel = require('gulp-babel');
 const terser = require('gulp-terser'); //ES6(ES2015)の圧縮に対応
+const webpack = require("webpack");
+const webpackConfig = require("./webpack.config");
+const webpackStream = require("webpack-stream");
 
 // 画像圧縮
 const imageMin = require('gulp-imagemin');
@@ -164,21 +167,28 @@ const sassCompile = () => {
 };
 
 // JavaScriptコンパイル
-const jsCompile = () => {
-  return src(paths.scripts.src)
-    .pipe(
-      plumber({
-        // エラーがあっても処理を止めない
-        errorHandler: notify.onError('Error: <%= error.message %>'),
-      })
-    )
-    .pipe(
-      babel({
-        presets: ['@babel/preset-env'],
-      })
-    )
-    .pipe(terser()) //圧縮
-    .pipe(dest(paths.scripts.dist));
+// const jsCompile = () => {
+//   return src(paths.scripts.src)
+//     .pipe(
+//       plumber({
+//         // エラーがあっても処理を止めない
+//         errorHandler: notify.onError('Error: <%= error.message %>'),
+//       })
+//     )
+//     .pipe(
+//       babel({
+//         presets: ['@babel/preset-env'],
+//       })
+//     )
+//     .pipe(terser()) //圧縮
+//     .pipe(dest(paths.scripts.dist));
+// };
+
+// webpack
+const jsBundle = (done) => {
+  //webpackStreamの第2引数にwebpackを渡す
+  webpackStream(webpackConfig, webpack).pipe(dest(paths.scripts.dist));
+  done();
 };
 
 // 画像圧縮
@@ -324,7 +334,8 @@ const watchFiles = () => {
   watch(paths.ejs.watch, series(ejsCompile, browserReloadFunc));
   watch(paths.styles.src, series(sassCompile));
   watch(paths.styles.copy, series(cssCopy));
-  watch(paths.scripts.src, series(jsCompile, browserReloadFunc));
+  // watch(paths.scripts.src, series(jsCompile, browserReloadFunc));
+  watch(paths.scripts.src, series(jsBundle, browserReloadFunc));
   watch(paths.scripts.copy, series(jsCopy, browserReloadFunc));
   watch(
     paths.images.src,
@@ -339,7 +350,8 @@ exports.default = series(
     ejsCompile,
     sassCompile,
     cssCopy,
-    jsCompile,
+    // jsCompile,
+		jsBundle,
     jsCopy,
     imagesCompress,
     webpConvert,
