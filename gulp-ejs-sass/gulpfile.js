@@ -67,8 +67,8 @@ const paths = {
     all: './public/',
     assets: ['./public/assets/css/', './public/assets/js/'],
     html: './public/!(assets)**',
-		css:'./public/assets/css/',
-		js:'./public/assets/js/',
+    css: './public/assets/css/',
+    js: './public/assets/js/',
     images: './public/assets/images/',
     fonts: './public/assets/fonts/',
   },
@@ -81,7 +81,7 @@ const ejsCompile = () => {
   return src(paths.ejs.src)
     .pipe(
       plumber({
-				// エラーがあっても処理を止めない
+        // エラーがあっても処理を止めない
         errorHandler: notify.onError('Error: <%= error.message %>'),
       })
     )
@@ -124,7 +124,7 @@ const sassCompile = () => {
     })
       .pipe(
         plumber({
-				// エラーがあっても処理を止めない
+          // エラーがあっても処理を止めない
           errorHandler: notify.onError('Error: <%= error.message %>'),
         })
       )
@@ -167,7 +167,7 @@ const jsCompile = () => {
   return src(paths.scripts.src)
     .pipe(
       plumber({
-				// エラーがあっても処理を止めない
+        // エラーがあっても処理を止めない
         errorHandler: notify.onError('Error: <%= error.message %>'),
       })
     )
@@ -187,7 +187,7 @@ const imagesCompress = () => {
   })
     .pipe(
       plumber({
-				// エラーがあっても処理を止めない
+        // エラーがあっても処理を止めない
         errorHandler: notify.onError('Error: <%= error.message %>'),
       })
     )
@@ -247,7 +247,7 @@ const webpConvert = () => {
   })
     .pipe(
       plumber({
-				// エラーがあっても処理を止めない
+        // エラーがあっても処理を止めない
         errorHandler: notify.onError('Error: <%= error.message %>'),
       })
     )
@@ -299,7 +299,7 @@ function cleanAll(done) {
 }
 // HTML フォルダ、ファイルのみ削除（ assets 以外削除）
 function cleanHtml(done) {
-	src(paths.clean.html, { read: false }).pipe(clean());
+  src(paths.clean.html, { read: false }).pipe(clean());
   done();
 }
 //public 内の CSS と JS を削除
@@ -349,6 +349,6 @@ exports.default = series(
 
 // その他のコマンド 例： npx gulp cleanAll の形で入力
 exports.cleanAll = series(cleanAll);
-exports.cleanExcludeHtml = series(cleanHtml);//assets以外削除
+exports.cleanExcludeHtml = series(cleanHtml); //assets以外削除
 exports.cleanCssJs = series(cleanCssJs);
 exports.cleanImages = series(cleanImages);

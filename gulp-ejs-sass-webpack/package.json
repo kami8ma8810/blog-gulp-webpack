@@ -1,14 +1,10 @@
 {
   "name": "gulp-ejs-sass",
   "version": "1.0.0",
-  "description": "",
   "main": "gulpfile.js",
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
   "browserslist": [
@@ -51,6 +47,8 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "@barba/core": "^2.9.7",
+    "gsap": "^3.8.0",
     "jquery": "^3.6.0",
     "lodash-es": "^4.17.21",
     "swiper": "^7.0.8"

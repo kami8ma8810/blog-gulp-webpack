@@ -11,9 +11,7 @@ module.exports = {
   // エントリーポイントの設定
   entry: {
     index: './src/js/index.js',
-    app: './src/js/app.js',
-    app2: './src/js/app2.js',
-    app3: './src/js/app3.js',
+    // app: './src/js/app.js',
   },
   // 出力の設定
   output: {
@@ -23,56 +21,57 @@ module.exports = {
     path: path.resolve(__dirname, 'public/assets/js'),
     // 出力するファイル名
     // [name] には entry に指定した名前が入る
-    // このサンプルでは、entry に app と app2 と app3 を指定しているため、
-    // app.bundle.js と app2.bundle.js と app3.bundle.js が出力される
+    // このサンプルでは、entry に index と app を指定しているため、
+    // index.bundle.js と app.bundle.js が出力される
     filename: '[name].bundle.js',
   },
-  module: {
-    rules: [
-      {
-        // ローダーの処理対象ファイル
-        test: /\.js$/,
-        // ローダーの処理対象となるディレクトリ
-        // include: path.resolve(__dirname, './src/js'),
-        exclude: /node_modules/,
-        // 利用するローダー
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env'],
-            },
-          },
-        ],
-      },
-    ],
-  },
-  // plugins: [
-  //   // まとめてインポートする
-  //   new Webpack.ProvidePlugin({
-  //     jQuery: 'jquery',
-  //     $: 'jquery',
-  //   }),
-  // ],
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.js$/,
+  //       // include: path.resolve(__dirname, './src/js'),
+  //       exclude: path.resolve(__dirname, './src/js/libs/barba-gsap.js'),
+  //       use: [
+  //         {
+  //           loader: 'babel-loader',
+  //           options: {
+  //             presets: ['@babel/preset-env'],
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  plugins: [
+    // まとめてインポートする
+    new Webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      // gsap: 'gsap',
+      // barba: '@barba/core',
+    }),
+  ],
   optimization: {
     splitChunks: {
+      // 共通モジュールとして分割する対象。以下の値を指定できる。
+      // initial: 静的にインポートしているモジュール、async: 動的（ダイナミック）にインポートしているモジュール、all: すべて
+      // node_modules 配下のモジュールをバンドル対象とする（webpack5では all 推奨
+      chunks: 'all',
+      minSize: 0,
+      minChunks: 1,
       cacheGroups: {
-        // 今回のプロパティ名は vendor だが、ここは任意のもので良い
-        vendor: {
-          // 共通モジュールとして分割する対象。以下の値を指定できる。
-          // initial: 静的にインポートしているモジュール、async: 動的（ダイナミック）にインポートしているモジュール、all: すべて
-          chunks: 'all',
-          // node_modules 配下のモジュールをバンドル対象とする
+        // プロパティ名の vendors は任意
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
-          // 出力するファイル名
-          // 今回は 'vendor' で、output.filename が '[name].bundle.js' のため、
-          // vendor.bundle.js が出力される。
+          priority: -10,
+          // 今回は 'vendor' で、output.filename が '[name].bundle.js' のため、 vendor.bundle.js が出力される。
           name: 'vendors',
         },
+        default: false,
       },
     },
+    // JavaScritpt を圧縮する
     minimizer: [
-      // JavaScritpt を圧縮する
       new TerserPlugin({
         // ライブラリのライセンスコメントなどを抽出した「xxx.LICENSE.txt」のようなファイルが出力されないようにする
         extractComments: false,

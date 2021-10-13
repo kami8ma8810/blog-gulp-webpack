@@ -18,6 +18,19 @@
 				"imgPath": "../assets/images/",
 				"linkPath": "../"
 			}
+		},
+		"rootPath":{
+			"home": {
+				"stylePath": "./assets/css/",
+				"scriptPath": "./assets/js/",
+				"imgPath": "./assets/images/",
+				"linkPath": "./"
+			},
+			"about": {
+				"stylePath": "../assets/css/",
+				"scriptPath": "../assets/js/",
+				"imgPath": "../assets/images/"
+			}
 		}
 	}
 }

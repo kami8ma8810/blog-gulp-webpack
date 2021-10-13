@@ -1,11 +1,15 @@
-import jQueryTest from './modules/jQuery-test'
-import modernFunction from './modules/modern-function'
-import highlightNav from './modules/highlight-nav'
-import topSlider from './modules/top-slider'
+// import jQueryTest from './libs/jQuery-test'
+// import modernFunction from './libs/modern-function'
+// import pageTransition from './libs/page-transition'
+import highlightNav from './libs/highlight-nav'
+import barbaGsap from './libs/barba-gsap'
+import topSlider from './libs/top-slider'
 
 document.addEventListener('DOMContentLoaded', () => {
-  jQueryTest();
-  modernFunction();
+  // jQueryTest();
+  // modernFunction();
+  // pageTransition();
   highlightNav();
+  barbaGsap();
   topSlider();
 });

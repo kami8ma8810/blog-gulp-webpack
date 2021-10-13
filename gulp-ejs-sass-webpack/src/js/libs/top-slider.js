@@ -1,4 +1,4 @@
-// import Swiper from 'swiper';
+import Swiper from 'swiper/bundle';
 // トップページswiper
 export default () => {
   if (document.querySelector('.top-swiper') !== null) {
