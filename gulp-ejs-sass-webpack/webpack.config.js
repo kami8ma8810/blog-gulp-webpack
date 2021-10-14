@@ -45,8 +45,8 @@ module.exports = {
   plugins: [
     // まとめてインポートする
     new Webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $: 'jquery',
+      // jQuery: 'jquery',
+      // $: 'jquery',
       // gsap: 'gsap',
       // barba: '@barba/core',
     }),

@@ -1,6 +1,11 @@
-// import barba from '@barba/core';
-// import anime from 'animejs/lib/anime.es.js';
-// import $ from 'jquery';
+/*
+参照サイト
+https://notes.sharesl.net/articles/50/
+ */
+
+import barba from '@barba/core';
+import anime from 'animejs/lib/anime.es.js';
+import $ from 'jquery';
 
 /*
  * ページ離脱アニメーション

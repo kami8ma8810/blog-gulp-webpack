@@ -1,3 +1,8 @@
+/*
+参照サイト
+https://www.evoworx.co.jp/blog/barbajsv2-transition/
+ */
+
 import barba from '@barba/core';
 import gsap from 'gsap';
 import highlightNav from './highlight-nav';
@@ -115,6 +120,9 @@ export default () => {
           await delay(600);
           enterAnimation();
           highlightNav();
+        },
+        async once(data) {
+         //初回ロード時に実行する場合の処理
         },
       },
     ],
