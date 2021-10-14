@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // jQueryTest();
   // modernFunction();
   // pageTransition();
-  highlightNav();
+  // highlightNav();
   barbaGsap();
   topSlider();
 });

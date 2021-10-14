@@ -6,6 +6,7 @@ https://www.evoworx.co.jp/blog/barbajsv2-transition/
 import barba from '@barba/core';
 import gsap from 'gsap';
 import highlightNav from './highlight-nav';
+import topSlider from './top-slider';
 
 // titleタグ以外のmetaタグの情報の書き換えを行う
 const replaceHeadTags = (target) => {
@@ -120,9 +121,11 @@ export default () => {
           await delay(600);
           enterAnimation();
           highlightNav();
+          // topSlider();
         },
         async once(data) {
-         //初回ロード時に実行する場合の処理
+					highlightNav();
+          //初回ロード時に実行する場合の処理
         },
       },
     ],

@@ -1,71 +1,25 @@
 @use '../global' as *;
 
 .container.-about {
-	background: #947f70;
-}
-
-.container > .body {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin-top: 30px;
-	-webkit-box-align: center;
-	-webkit-box-direction: normal;
-	-webkit-box-orient: vertical;
-	-webkit-box-pack: center;
-	-ms-flex-align: center;
-	-ms-flex-pack: center;
-}
-
-.container > .body > .title {
-	font-size: 3em;
-	letter-spacing: 0.04em;
-}
-
-.container > .body > .title.-yellow {
-	color: #ffdb3f;
-}
-
-.container > .body > .button {
-	position: relative;
-	z-index: 21 !important;
-	display: block;
-	width: 260px;
-	min-width: 200px;
-	padding: 0.75em 1em;
-	margin-top: 30px;
-	-webkit-animation-fill-mode: initial;
-	animation-fill-mode: initial;
-	background: #221815;
-	border-radius: 39px;
-	color: #ffffff;
-	font-size: 1.2em;
-	text-align: center;
-	text-decoration: none;
+  background: #947f70;
 }
 
 .common-transition {
-	position: fixed;
-	z-index: 3;
-	top: 0;
-	left: 0;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	width: 100%;
-	height: 100vh;
-	padding: 0;
-	margin: 0;
-	pointer-events: none;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
 }
 
 .common-transition > .item {
-	width: 20%;
-	background: $colorYellow;
-	-webkit-transform: scaleY(0);
-	transform: scaleY(0);
+  width: 20%;
+  background: $colorYellow;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
 }
